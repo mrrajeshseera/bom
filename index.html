@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Register</h2> 
+    <form id="registerForm">
+         <label for="username">Username:</label>
+          <input type="text" id="username" required placeholder="rajesh123"><br><br> 
+          <label for="password">Password:</label> 
+          <input type="password" id="password" required placeholder="333"><br><br>
+           <label for="gmail">Gmail:</label> 
+           <input type="email" id="gmail" required placeholder="rajeshgmail.com"><br><br>
+            <button type="submit">Register</button> 
+    </form> 
+            
+    <h2>Login</h2> 
+    <form id="loginForm">
+                 <label for="loginUsername">Username:</label>
+                  <input type="text" id="loginUsername" required placeholder="rajesh123"><br><br>
+                   <label for="loginPassword">Password:</label> 
+                   <input type="password" id="loginPassword" required  placeholder="333"><br><br> 
+                   <label for="loginGmail">Gmail:</label> 
+                   <input type="email" id="loginGmail" required placeholder="rajeshgmail.com"><br><br>
+                    <button type="submit">Login</button> 
+    </form>
+
+
+
+
+
+    <script>
+       // Register form submission 
+       document.getElementById('registerForm').addEventListener('submit', function(event) { 
+        event.preventDefault(); 
+        const username = document.getElementById('username').value; 
+        const password = document.getElementById('password').value; 
+        const gmail = document.getElementById('gmail').value; 
+        
+        localStorage.setItem('username', username); 
+        localStorage.setItem('password', password); 
+        localStorage.setItem('gmail', gmail); 
+        
+        alert('Registration successful!'); });
+           
+       // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+             event.preventDefault(); 
+             const loginUsername = document.getElementById('loginUsername').value; 
+             const loginPassword = document.getElementById('loginPassword').value; 
+             const loginGmail = document.getElementById('loginGmail').value;
+              
+             
+             const storedUsername = localStorage.getItem('username'); 
+              const storedPassword = localStorage.getItem('password'); 
+              const storedGmail = localStorage.getItem('gmail'); 
+              
+              if (loginUsername === storedUsername && loginPassword === storedPassword && loginGmail === storedGmail) { 
+                alert('Login successful!'); 
+            } 
+                else { 
+                    alert('Login failed. Please check your credentials.'); 
+                }
+             });
+
+    </script>
+</body>
+</html>
